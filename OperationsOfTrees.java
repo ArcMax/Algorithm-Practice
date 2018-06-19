@@ -1,7 +1,9 @@
-package com.basics.algorithm.archana.algorithmbasics.Trees_Graphs;
+package com.basics.algorithm.archana.algorithmbasics.heaps;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -47,6 +49,9 @@ public class OperationsOfTrees {
 
         //search value in BST
         System.out.println("search value" + searchValue(root, 60));
+
+        //Level order traversal
+        System.out.println("Level order traversal"+levelOrderTraversal(root));
     }
 
     //INORDER TRAVERSAL RECURSION
@@ -230,6 +235,34 @@ public class OperationsOfTrees {
                     current.left = null;
                 }
             }
+        }
+        return list;
+    }
+
+    //LEVEL-ORDER-TRAVERSAL
+    List<List<Integer>> levelOrderTraversal(TreeNode root){
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> level = new ArrayList<>();
+        Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
+
+        if(root == null) return list;
+
+        nodeQueue.add(root);
+        while (!nodeQueue.isEmpty()){
+            root = nodeQueue.poll();
+            level.add(root.val);
+
+            if(nodeQueue.isEmpty()){
+                list.add(level);
+                level = new ArrayList<>();
+            }
+            if(root.left != null){
+                nodeQueue.add(root.left);
+            }
+            if (root.right != null){
+                nodeQueue.add(root.right);
+            }
+
         }
         return list;
     }
