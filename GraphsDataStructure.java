@@ -18,35 +18,10 @@ import java.util.Stack;
  * Breadth-first-traversal
  */
 
-
-//Node class for Adjacency list
-//Node class has data and visited & its neighbours
-//create graph by adding neighbours
-//get neighbours for each vertex
-class Node {
-    int data;
-    boolean visited;
-    List<Node> neighbours;
-
-    //constructor
-    Node(int data) {
-        this.data = data;
-        this.neighbours = new ArrayList<>();
-    }
-
-    public void addneighbours(Node neighbrNode) {
-        this.neighbours.add(neighbrNode);
-    }
-
-    public List<Node> getNeighbours() {
-        return neighbours;
-    }
-}
-
 public class GraphsDataStructure {
 
     private Queue<Node> queue = new LinkedList<Node>();
-    private Stack<Node> stack = new Stack<>();
+
 
     public static void main(String[] args) {
         Node node40 = new Node(40);
@@ -71,8 +46,7 @@ public class GraphsDataStructure {
         GraphsDataStructure graphsDataStructure = new GraphsDataStructure();
         System.out.println("BREADTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_LIST");
         graphsDataStructure.bfs(node40);
-        System.out.println("DEPTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_MATRIX");
-        graphsDataStructure.dfs(node40);
+
     }
 
     //BFS method
@@ -101,28 +75,5 @@ public class GraphsDataStructure {
             }
             //do untill all nodes are marked visted
         }
-    }
-
-    //DFS
-    //Its same as bfs only difference is we are using stack
-    public void dfs(Node node){
-        stack.add(node);
-        node.visited = true;
-
-        while(!stack.isEmpty()){
-            Node element = stack.pop();
-            System.out.println(element+",");
-
-            List<Node> neighbour = element.getNeighbours();
-            for (int i =0; i< neighbour.size();i++){
-                Node n = neighbour.get(i);
-                if (n!=null && !n.visited){
-                    stack.push(n);
-                    n.visited = true;
-                }
-            }
-
-        }
-
     }
 }
