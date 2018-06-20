@@ -116,7 +116,7 @@ public class OperationsOfTrees {
         /*if node to be deleted has one child, copy child to node & delete child*/
         //when data is same as root node, then this is the node to be deleted
         else {
-            //Node with only one child or no child
+            //GraphNodeAdjList with only one child or no child
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {

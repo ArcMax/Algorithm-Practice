@@ -1,10 +1,8 @@
 package com.basics.algorithm.archana.algorithmbasics.heaps;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Created by archana on 6/19/2018.
@@ -18,19 +16,19 @@ import java.util.Stack;
  * Breadth-first-traversal
  */
 
-public class GraphsDataStructure {
+public class BFSGraphsDataStructure {
 
-    private Queue<Node> queue = new LinkedList<Node>();
+    private Queue<GraphNodeAdjList> queue = new LinkedList<GraphNodeAdjList>();
 
 
     public static void main(String[] args) {
-        Node node40 = new Node(40);
-        Node node10 = new Node(10);
-        Node node20 = new Node(20);
-        Node node30 = new Node(30);
-        Node node60 = new Node(60);
-        Node node50 = new Node(50);
-        Node node70 = new Node(70);
+        GraphNodeAdjList node40 = new GraphNodeAdjList(40);
+        GraphNodeAdjList node10 = new GraphNodeAdjList(10);
+        GraphNodeAdjList node20 = new GraphNodeAdjList(20);
+        GraphNodeAdjList node30 = new GraphNodeAdjList(30);
+        GraphNodeAdjList node60 = new GraphNodeAdjList(60);
+        GraphNodeAdjList node50 = new GraphNodeAdjList(50);
+        GraphNodeAdjList node70 = new GraphNodeAdjList(70);
 
         node40.addneighbours(node10);
         node40.addneighbours(node20);
@@ -43,14 +41,14 @@ public class GraphsDataStructure {
         node60.addneighbours(node70);
         node50.addneighbours(node70);
 
-        GraphsDataStructure graphsDataStructure = new GraphsDataStructure();
+        BFSGraphsDataStructure graphsDataStructure = new BFSGraphsDataStructure();
         System.out.println("BREADTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_LIST");
         graphsDataStructure.bfs(node40);
 
     }
 
     //BFS method
-    public void bfs(Node node) {
+    public void bfs(GraphNodeAdjList node) {
         //add to queue first node and mark as visited
         queue.add(node);
         node.visited = true;
@@ -58,14 +56,14 @@ public class GraphsDataStructure {
         // check is queue is  not empty
         while (!queue.isEmpty()) {
             //poll from queue & print
-            Node element = queue.poll();
+            GraphNodeAdjList element = queue.poll();
             System.out.print(element.data + ",");
 
             //get all neighbours of polled queue
-            List<Node> neighbourList = element.getNeighbours();
+            List<GraphNodeAdjList> neighbourList = element.getNeighbours();
             //loop through each element
             for (int i = 0; i < neighbourList.size(); i++) {
-                Node n = neighbourList.get(i);
+                GraphNodeAdjList n = neighbourList.get(i);
                 //check if visited before
                 // else add to queue & mark visite
                 if (n != null && !n.visited) {

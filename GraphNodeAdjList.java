@@ -6,28 +6,28 @@ import java.util.List;
 /**
  * Created by archana on 6/19/2018.
  * <p>
- * //Node class for Adjacency list
- * //Node class has data and visited & its neighbours
+ * //GraphNodeAdjList class for Adjacency list
+ * //GraphNodeAdjList class has data and visited & its neighbours
  * //create graph by adding neighbours
  * //get neighbours for each vertex
  */
 
-public class Node {
+public class GraphNodeAdjList {
     int data;
     boolean visited;
-    List<Node> neighbours;
+    List<GraphNodeAdjList> neighbours;
 
     //constructor
-    Node(int data) {
+    GraphNodeAdjList(int data) {
         this.data = data;
         this.neighbours = new ArrayList<>();
     }
 
-    public void addneighbours(Node neighbrNode) {
+    public void addneighbours(GraphNodeAdjList neighbrNode) {
         this.neighbours.add(neighbrNode);
     }
 
-    public List<Node> getNeighbours() {
+    public List<GraphNodeAdjList> getNeighbours() {
         return neighbours;
     }
 }
