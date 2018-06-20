@@ -1,5 +1,8 @@
 package com.basics.algorithm.archana.algorithmbasics.heaps;
 
+import android.app.Activity;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -18,8 +21,8 @@ import java.util.Queue;
 
 public class BFSGraphsDataStructure {
 
+    ArrayList<GraphNodeAdjMatrix> nodes = new ArrayList<>();
     private Queue<GraphNodeAdjList> queue = new LinkedList<GraphNodeAdjList>();
-
 
     public static void main(String[] args) {
         GraphNodeAdjList node40 = new GraphNodeAdjList(40);
@@ -45,6 +48,40 @@ public class BFSGraphsDataStructure {
         System.out.println("BREADTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_LIST");
         graphsDataStructure.bfs(node40);
 
+        MatrixMain(graphsDataStructure);
+    }
+
+    private static void MatrixMain(BFSGraphsDataStructure bfsgraphsDataStructure) {
+
+        GraphNodeAdjMatrix node40 =new GraphNodeAdjMatrix(40);
+        GraphNodeAdjMatrix node10 =new GraphNodeAdjMatrix(10);
+        GraphNodeAdjMatrix node20 =new GraphNodeAdjMatrix(20);
+        GraphNodeAdjMatrix node30 =new GraphNodeAdjMatrix(30);
+        GraphNodeAdjMatrix node60 =new GraphNodeAdjMatrix(60);
+        GraphNodeAdjMatrix node50 =new GraphNodeAdjMatrix(50);
+        GraphNodeAdjMatrix node70 =new GraphNodeAdjMatrix(70);
+
+        bfsgraphsDataStructure.nodes.add(node40);
+        bfsgraphsDataStructure.nodes.add(node10);
+        bfsgraphsDataStructure.nodes.add(node20);
+        bfsgraphsDataStructure.nodes.add(node30);
+        bfsgraphsDataStructure.nodes.add(node60);
+        bfsgraphsDataStructure.nodes.add(node50);
+        bfsgraphsDataStructure.nodes.add(node70);
+
+        int adjacency_matrix[][] = {
+                {0,1,1,0,0,0,0},  // Node 1: 40
+                {0,0,0,1,0,0,0},  // Node 2 :10
+                {0,1,0,1,1,1,0},  // Node 3: 20
+                {0,0,0,0,1,0,0},  // Node 4: 30
+                {0,0,0,0,0,0,1},  // Node 5: 60
+                {0,0,0,0,0,0,1},  // Node 6: 50
+                {0,0,0,0,0,0,0},  // Node 7: 70
+        };
+
+        System.out.println();
+        System.out.println("BFS WITH MATRIX ITERATIVE");
+        bfsgraphsDataStructure.bfsIterativeMatrix(adjacency_matrix,node40);
     }
 
     //BFS method
@@ -72,6 +109,28 @@ public class BFSGraphsDataStructure {
                 }
             }
             //do untill all nodes are marked visted
+        }
+    }
+
+    Queue<GraphNodeAdjMatrix> matrixQueue = new LinkedList<>();
+    private void bfsIterativeMatrix(int[][] adjacency_matrix, GraphNodeAdjMatrix node) {
+        matrixQueue.add(node);
+        node.visited = true;
+
+        while (!matrixQueue.isEmpty()){
+            GraphNodeAdjMatrix matrixElement = matrixQueue.poll();
+            System.out.print(matrixElement+",");
+
+            List<GraphNodeAdjMatrix> adjMatrixList = findNeighbours.findNeighbours(adjacency_matrix,node,nodes);
+            for (int i =0 ;i < adjMatrixList.size() ; i++){
+                GraphNodeAdjMatrix nodeAdjMatrix = adjMatrixList.get(i);
+
+                if (nodeAdjMatrix!=null && !nodeAdjMatrix.visited){
+                    matrixQueue.add(nodeAdjMatrix);
+                    nodeAdjMatrix.visited = true;
+                }
+            }
+
         }
     }
 }

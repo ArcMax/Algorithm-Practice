@@ -97,36 +97,11 @@ public class DFSGraphDataStructure {
     }
 
     //DFS WITH MATRIX
-
-    //find neighbours of node using adjacency matrix
-    //if adjMatrix[i][j] = 1, i.e i & j are connected
-    public ArrayList<GraphNodeAdjMatrix> findNeighbours(int adjMatrix[][], GraphNodeAdjMatrix x){
-        int nodeIndex = -1;
-        ArrayList<GraphNodeAdjMatrix> neighbours = new ArrayList<>();
-
-        //for all vertices
-        for (int i = 0; i < nodes.size() ; i++){
-            if(nodes.get(i).equals(x)){
-                nodeIndex = i;
-                break;
-            }
-        }
-
-        if(nodeIndex != -1){
-            for (int j = 0 ; j < adjMatrix[nodeIndex].length ; j++){
-                    if(adjMatrix[nodeIndex][j] == 1){
-                        neighbours.add(nodes.get(j));
-                    }
-            }
-        }
-
-        return neighbours;
-    }
-
+    findNeighbours findNeighbours = new findNeighbours();
     //DFS recursive on matrix
     public void dfsRecursiveMatrix(int adjMatrix[][],GraphNodeAdjMatrix node){
         System.out.print(node.data+",");
-        ArrayList<GraphNodeAdjMatrix> findNeighbours = findNeighbours(adjMatrix,node);
+        ArrayList<GraphNodeAdjMatrix> findNeighbours = com.basics.algorithm.archana.algorithmbasics.heaps.findNeighbours.findNeighbours(adjMatrix,node,nodes);
         node.visited = true;
         for (int i = 0 ; i < findNeighbours.size() ; i++){
             GraphNodeAdjMatrix n = findNeighbours.get(i);
