@@ -45,8 +45,8 @@ public class BFSGraphsDataStructure {
         node50.addneighbours(node70);
 
         BFSGraphsDataStructure graphsDataStructure = new BFSGraphsDataStructure();
-        System.out.println("BREADTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_LIST");
-        graphsDataStructure.bfs(node40);
+//        System.out.println("BREADTH_FIRST_TRAVERSAL_GRAPHS_ADJACENCY_LIST");
+//        graphsDataStructure.bfs(node40);
 
         MatrixMain(graphsDataStructure);
     }
@@ -113,15 +113,16 @@ public class BFSGraphsDataStructure {
     }
 
     Queue<GraphNodeAdjMatrix> matrixQueue = new LinkedList<>();
+    findNeighbours neighbours = new findNeighbours();
     private void bfsIterativeMatrix(int[][] adjacency_matrix, GraphNodeAdjMatrix node) {
         matrixQueue.add(node);
         node.visited = true;
 
         while (!matrixQueue.isEmpty()){
             GraphNodeAdjMatrix matrixElement = matrixQueue.poll();
-            System.out.print(matrixElement+",");
+            System.out.print(matrixElement.data+",");
 
-            List<GraphNodeAdjMatrix> adjMatrixList = findNeighbours.findNeighbours(adjacency_matrix,node,nodes);
+            List<GraphNodeAdjMatrix> adjMatrixList = neighbours.findNeighbours(adjacency_matrix,node,nodes);
             for (int i =0 ;i < adjMatrixList.size() ; i++){
                 GraphNodeAdjMatrix nodeAdjMatrix = adjMatrixList.get(i);
 
