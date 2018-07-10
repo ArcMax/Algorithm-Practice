@@ -1,4 +1,4 @@
-package com.basics.algorithm.archana.algorithmbasics.heaps;
+package com.basics.algorithm.archana.algorithmbasics.OnGitHub;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public class DFSGraphDataStructure {
     //DFS recursive on matrix
     public void dfsRecursiveMatrix(int adjMatrix[][],GraphNodeAdjMatrix node){
         System.out.print(node.data+",");
-        ArrayList<GraphNodeAdjMatrix> findNeighbours = com.basics.algorithm.archana.algorithmbasics.heaps.findNeighbours.findNeighbours(adjMatrix,node,nodes);
+        ArrayList<GraphNodeAdjMatrix> findNeighbours = com.basics.algorithm.archana.algorithmbasics.OnGitHub.findNeighbours.findNeighbours(adjMatrix,node,nodes);
         node.visited = true;
         for (int i = 0 ; i < findNeighbours.size() ; i++){
             GraphNodeAdjMatrix n = findNeighbours.get(i);

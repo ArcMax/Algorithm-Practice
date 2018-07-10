@@ -1,4 +1,4 @@
-package com.basics.algorithm.archana.algorithmbasics.heaps;
+package com.basics.algorithm.archana.algorithmbasics.OnGitHub;
 
 import java.util.ArrayList;
 
